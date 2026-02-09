@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ukubona LLC: Level 1 - Session 2: Probability and Distributions</title>
+  <meta name="description" content="Level 1, Session 2 of the Clinical Biostatistics Internship at Ukubona LLC.">
+  <link rel="canonical" href="https://ukubona-llc.github.io/">
+  <meta name="robots" content="index,follow">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0a0a0f">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:site_name" content="Ukubona LLC">
+  <meta property="og:title" content="Ukubona LLC: Level 1 - Session 2: Probability and Distributions">
+  <meta property="og:description" content="Level 1, Session 2 of the Clinical Biostatistics Internship at Ukubona LLC.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ukubona-llc.github.io/">
+  <meta property="og:image" content="https://abikesa.github.io/logos/assets/ukubona-light.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ukubona LLC: Level 1 - Session 2: Probability and Distributions">
+  <meta name="twitter:description" content="Level 1, Session 2 of the Clinical Biostatistics Internship at Ukubona LLC.">
+  <meta name="twitter:image" content="https://abikesa.github.io/logos/assets/ukubona-light.png">
+
+  <!-- Icons / assets -->
+  <link rel="icon" href="https://abikesa.github.io/favicon/assets/favicon-light.ico" type="image/x-icon">
+  <link rel="icon" href="https://abikesa.github.io/favicon/assets/favicon-light.ico" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="https://abikesa.github.io/favicon/assets/favicon-dark.ico" media="(prefers-color-scheme: dark)">
+  <link rel="preload" href="https://abikesa.github.io/logos/assets/ukubona-light.png" as="image">
+  <link rel="preload" href="https://abikesa.github.io/logos/assets/ukubona-dark.png" as="image">
+
+  <!-- Perf: preconnect fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/index.css">
+  <script id="MathJax-script" defer
+     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+<body>
+    <div class="scroll-indicator"><div class="scroll-progress"></div></div>
+  <div class="bg-pattern"></div>
+  <!-- Header with app-grid linking back to index and other sessions -->
+   <header class="header">
+    <div class="nav-container wrap-max">
+      <img src="https://abikesa.github.io/logos/assets/ukubona-dark.png"
+           alt="Ukubona LLC Logo"
+           id="logo"
+           class="logo" />
+      <div class="top-right">
+        <ul class="nav-links">
+          <li><a href="../../index.html" class="nav-link" data-nav="home">Home</a></li>
+        </ul>
+        <button class="menu-icon" id="menuIcon" role="button" aria-label="Open navigation menu" aria-expanded="false">
+          <div></div><div></div><div></div>
+          <div></div><div></div><div></div>
+          <div></div><div></div><div></div>
+        </button>
+        <button id="toggle-theme" aria-label="Toggle theme">🌙</button>
+      </div>
+    </div>
+    <div class="app-grid wrap-max" id="gridMenu" aria-hidden="true">
+      <a href="session0.html"><div class="icon-box">⚙️</div>Session 0</a>
+      <a href="session1.html"><div class="icon-box">1️⃣</div>Session 1</a>
+      <a href="session3.html"><div class="icon-box">3️⃣</div>Session 3</a>
+      <a href="session4.html"><div class="icon-box">4️⃣</div>Session 4</a>
+      <a href="session5.html"><div class="icon-box">5️⃣</div>Session 5</a>
+      <a href="session6.html"><div class="icon-box">6️⃣</div>Session 6</a>
+      <a href="session7.html"><div class="icon-box">7️⃣</div>Session 7</a>
+      <a href="session8.html"><div class="icon-box">8️⃣</div>Session 8</a>
+      <a href="https://ukubona-llc.github.io"><div class="icon-box">📊</div>Ukubona Home</a>
+    </div>
+  </header>
+  <main class="page wrap-max">
+    <section class="card">
+      <h1>Session 2: Building Blocks – Probability and Distributions (Normal, Binomial & Simulations)</h1>
+      <h2>Quick Review</h2>
+      <p>From Amanda Ategeka, MD's notes: Probability models uncertainty in clinical outcomes, like patient recovery rates. Building on descriptive stats, distributions help predict 'hidden patterns' in data—essential for evidence-based medicine.</p>
+      <h2>Get Started</h2>
+      <p>Open your <code>ukubona-clinical-lab</code> folder in VS Code. In the terminal, type <code>wsl</code> (if on Windows) to enter Linux mode, then <code>source venv/bin/activate</code> to turn on your lab.</p>
+      <h2>Step 1: Create s2.py</h2>
+      <p>In terminal, type <code>code s2.py</code>. This opens the file in VS Code.</p>
+      <p>Copy-paste the code below into it, then save (Ctrl+S).</p>
+      <pre><code>import numpy as np
+import matplotlib.pyplot as plt
+import scipy.stats as stats
+import os
+
+os.makedirs("plots", exist_ok=True)
+
+# Normal distribution parameters (e.g., for patient recovery times)
+mu, sigma = 10, 2  # Mean 10 days, std 2 days
+x = np.linspace(mu - 3*sigma, mu + 3*sigma, 100)
+pdf = stats.norm.pdf(x, mu, sigma)
+
+# Simulate data
+data = np.random.normal(mu, sigma, 1000)
+
+# Plot histogram and PDF
+fig, ax = plt.subplots()
+ax.hist(data, bins=30, density=True, color='blue', alpha=0.7, label='Simulated Data')
+ax.plot(x, pdf, 'r-', label='Normal PDF')
+ax.set_xlabel('Recovery Time (days)')
+ax.set_ylabel('Density')
+ax.set_title('Normal Distribution: Patient Recovery Times')
+ax.legend()
+ax.grid(True)
+
+plt.savefig("plots/session2_normal_dist.png", dpi=200)
+plt.close()
+
+# Binomial example (e.g., success in clinical trial)
+n, p = 10, 0.3  # 10 patients, 30% success rate
+binomial_data = np.random.binomial(n, p, 1000)
+ax = plt.subplot(111)
+ax.hist(binomial_data, bins=np.arange(0, n+2)-0.5, density=True, color='green', alpha=0.7, label='Binomial Data')
+x_bin = np.arange(0, n+1)
+pmf = stats.binom.pmf(x_bin, n, p)
+ax.plot(x_bin, pmf, 'ro-', label='Binomial PMF')
+ax.set_xlabel('Number of Successes')
+ax.set_ylabel('Probability')
+ax.set_title('Binomial Distribution: Clinical Trial Successes')
+ax.legend()
+ax.grid(True)
+
+plt.savefig("plots/session2_binomial_dist.png", dpi=200)
+plt.close()
+
+print("✅ Plots saved!")</code></pre>
+      <h2>Step 2: Run the Code</h2>
+      <p>Update your run.sh to run s2.py (edit the file: change 'python s1.py' to 'python s2.py'). Then in terminal, type <code>bash run.sh</code>. This runs your script and saves plots in <code>plots/</code>. Open the images—they show simulated distributions for clinical scenarios!</p>
+      <h2>Excite: Play Around</h2>
+      <p>Edit s2.py: Change mu to 15 (longer average recovery) or p to 0.5 (higher success rate). Save, run <code>bash run.sh</code> again. See how the distributions shift? That's probability modeling real clinical variability!</p>
+      <h2>Homework</h2>
+      <p>Try different distributions (e.g., add Poisson for rare events like side effects: use stats.poisson). Save your best plots. Commit to GitHub: In terminal, <code>git add .</code>, <code>git commit -m "Session 2 distributions"</code>, <code>git push</code>.</p>
+      <h2>Math Focus</h2>
+      <p>Distributions model probability—like normal for continuous data (e.g., blood pressure) and binomial for discrete outcomes (e.g., trial successes). Simulations help visualize uncertainty in medicine.</p>
+    </section>
+  </main>
+  <!-- Footer -->
+   <footer class="footer">
+    <div class="wrap-max footer-wrap">
+      <div class="footer-chorus" aria-label="Ukubona chorus">
+        <span class="chip">"Ukubona" means</span>
+        <span class="chip"><em>to see, to witness</em> —</span>
+        <span class="chip">to look into the mirror.</span>
+      </div>
+      <div class="footer-extra" hidden></div>
+      <div class="footer-footnote" aria-live="polite"></div>
+      <div class="footer-micro" style="margin-top:12px">
+        <p>© 2026 Ukubona LLC · <a href="/assets/files/ukubona.vcf" download>vCard</a> · Johns Hopkins Enterprise Vendor (June 2025)</p>
+      </div>
+    </div>
+  </footer>
+ <script src="../js/index.js"></script>
+</body>
+</html>

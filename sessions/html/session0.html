@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ukubona LLC: Level 1 - Session 0: Setup Your Clinical Lab</title>
+  <meta name="description" content="Level 1, Session 0 of the Clinical Biostatistics Internship at Ukubona LLC.">
+  <link rel="canonical" href="https://ukubona-llc.github.io/">
+  <meta name="robots" content="index,follow">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0a0a0f">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:site_name" content="Ukubona LLC">
+  <meta property="og:title" content="Ukubona LLC: Level 1 - Session 0: Setup Your Clinical Lab">
+  <meta property="og:description" content="Level 1, Session 0 of the Clinical Biostatistics Internship at Ukubona LLC.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ukubona-llc.github.io/">
+  <meta property="og:image" content="https://abikesa.github.io/logos/assets/ukubona-light.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ukubona LLC: Level 1 - Session 0: Setup Your Clinical Lab">
+  <meta name="twitter:description" content="Level 1, Session 0 of the Clinical Biostatistics Internship at Ukubona LLC.">
+  <meta name="twitter:image" content="https://abikesa.github.io/logos/assets/ukubona-light.png">
+
+  <!-- Icons / assets -->
+  <link rel="icon" href="https://abikesa.github.io/favicon/assets/favicon-light.ico" type="image/x-icon">
+  <link rel="icon" href="https://abikesa.github.io/favicon/assets/favicon-light.ico" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="https://abikesa.github.io/favicon/assets/favicon-dark.ico" media="(prefers-color-scheme: dark)">
+  <link rel="preload" href="https://abikesa.github.io/logos/assets/ukubona-light.png" as="image">
+  <link rel="preload" href="https://abikesa.github.io/logos/assets/ukubona-dark.png" as="image">
+
+  <!-- Perf: preconnect fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/index.css">
+  <script id="MathJax-script" defer
+     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+<body>
+    <div class="scroll-indicator"><div class="scroll-progress"></div></div>
+  <div class="bg-pattern"></div>
+  <!-- Header with app-grid linking back to index and other sessions -->
+   <header class="header">
+    <div class="nav-container wrap-max">
+      <img src="https://abikesa.github.io/logos/assets/ukubona-dark.png"
+           alt="Ukubona LLC Logo"
+           id="logo"
+           class="logo" />
+      <div class="top-right">
+        <ul class="nav-links">
+          <li><a href="../../index.html" class="nav-link" data-nav="home">Home</a></li>
+        </ul>
+        <button class="menu-icon" id="menuIcon" role="button" aria-label="Open navigation menu" aria-expanded="false">
+          <div></div><div></div><div></div>
+          <div></div><div></div><div></div>
+          <div></div><div></div><div></div>
+        </button>
+        <button id="toggle-theme" aria-label="Toggle theme">🌙</button>
+      </div>
+    </div>
+    <div class="app-grid wrap-max" id="gridMenu" aria-hidden="true">
+      <a href="session1.html"><div class="icon-box">1️⃣</div>Session 1</a>
+      <a href="session2.html"><div class="icon-box">2️⃣</div>Session 2</a>
+      <a href="session3.html"><div class="icon-box">3️⃣</div>Session 3</a>
+      <a href="session4.html"><div class="icon-box">4️⃣</div>Session 4</a>
+      <a href="session5.html"><div class="icon-box">5️⃣</div>Session 5</a>
+      <a href="session6.html"><div class="icon-box">6️⃣</div>Session 6</a>
+      <a href="session7.html"><div class="icon-box">7️⃣</div>Session 7</a>
+      <a href="session8.html"><div class="icon-box">8️⃣</div>Session 8</a>
+      <a href="https://ukubona-llc.github.io"><div class="icon-box">📊</div>Ukubona Home</a>
+    </div>
+  </header>
+  <main class="page wrap-max">
+
+<section class="card">
+
+<h1>Session 0: Automated One-Click Setup — Your Clinical Lab</h1>
+
+<h2>Why This Matters</h2>
+
+<p>
+This setup refreshes your local dev environment with automation using Bash scripts. Since you're already onboarded with VS Code, Python, and WSL on Windows, we'll focus on quick steps to build a "lab" for clinical biostatistics simulations. By the end, you'll run a script that draws a simple distribution plot—your first biostats output!
+</p>
+
+<p>
+We'll use VS Code's terminal. On Windows, remember to type <code>wsl</code> first to switch to Linux mode (where Bash works best). File paths in Bash use / (forward slashes), not \ (backslashes).
+</p>
+
+<hr>
+
+<h2>Step 1: Open VS Code and Your Project Folder</h2>
+
+<ol>
+  <li>Open VS Code.</li>
+  <li>Click "File" > "Open Folder..." and choose/create a folder like <code>ukubona-clinical-lab</code>.</li>
+  <li>Open the terminal in VS Code (Ctrl+` or Terminal > New Terminal).</li>
+  <li>If not already in WSL, type <code>wsl</code> and hit Enter to enter Linux mode.</li>
+</ol>
+
+<hr>
+
+<h2>Step 2: Create bootstrap.sh</h2>
+
+<p>In the terminal, type <code>code bootstrap.sh</code> and hit Enter. This opens a new file in VS Code.</p>
+
+<p>Copy the code below, paste it into the editor, and save (Ctrl+S).</p>
+
+<pre><code>#!/usr/bin/env bash
+
+set -e
+
+echo "===================================="
+echo "🚀 Bootstrapping Ukubona Clinical Lab"
+echo "===================================="
+
+# Check for Python
+if ! command -v python &> /dev/null && ! command -v python3 &> /dev/null; then
+    echo "❌ Python not found. Install Python 3 from python.org."
+    exit 1
+fi
+
+if command -v python3 &> /dev/null; then
+    PYTHON=python3
+else
+    PYTHON=python
+fi
+
+echo "✅ Using: $PYTHON"
+
+# Create venv if missing
+if [ ! -d "venv" ]; then
+    $PYTHON -m venv venv
+fi
+
+# Activate venv
+if [[ "$OSTYPE" == "msys"* || "$OSTYPE" == "cygwin"* ]]; then
+    source venv/Scripts/activate
+else
+    source venv/bin/activate
+fi
+
+# Create requirements.txt
+cat <<EOF > requirements.txt
+numpy
+matplotlib
+scipy
+statsmodels
+EOF
+
+# Install packages
+pip install --upgrade pip
+pip install -r requirements.txt
+
+# Create run.sh
+cat <<EOF > run.sh
+#!/usr/bin/env bash
+
+set -e
+
+if [[ "$OSTYPE" == "msys"* || "$OSTYPE" == "cygwin"* ]]; then
+    source venv/Scripts/activate
+else
+    source venv/bin/activate
+fi
+
+python s1.py
+EOF
+
+# No chmod yet - we'll run with bash
+
+# Create s1.py
+cat <<EOF > s1.py
+import numpy as np
+import matplotlib.pyplot as plt
+import os
+
+os.makedirs("plots", exist_ok=True)
+
+# Simulate simple clinical data: patient ages and blood pressure
+np.random.seed(42)
+ages = np.random.normal(50, 10, 100)
+bp = 80 + 0.5 * ages + np.random.normal(0, 5, 100)
+
+# Simple linear regression
+slope, intercept = np.polyfit(ages, bp, 1)
+
+fig, ax = plt.subplots()
+ax.scatter(ages, bp, color="blue", label="Data Points")
+ax.plot(ages, slope * ages + intercept, color="red", label="Regression Line")
+
+ax.set_xlabel("Age")
+ax.set_ylabel("Blood Pressure")
+ax.set_title("Simple Regression: Age vs Blood Pressure")
+ax.legend()
+ax.grid(True)
+
+plt.savefig("plots/session1_regression.png", dpi=200)
+plt.close()
+
+print("✅ Plot saved!")
+EOF
+
+echo "✅ Bootstrap complete! Your lab is ready."
+echo
+echo "Next: In terminal, type 'bash run.sh' to test."
+</code></pre>
+
+<hr>
+
+<h2>Step 3: Run the Bootstrap Script</h2>
+
+<p>In the terminal (make sure you're in WSL—type <code>wsl</code> if needed), type:</p>
+
+<pre><code>bash bootstrap.sh
+</code></pre>
+
+<p>Watch it set up your venv, install tools, and create files.</p>
+
+<hr>
+
+<h2>Step 4: Test Your Setup</h2>
+
+<p>In the terminal, type:</p>
+
+<pre><code>bash run.sh
+</code></pre>
+
+<p>This runs the test and creates <code>plots/session1_regression.png</code>. Open it in VS Code (File > Open File... or right-click in Explorer pane) or your file explorer—it's your first clinical biostats diagram!</p>
+
+<p>Reminder: Before sessions, type <code>source venv/bin/activate</code> (or <code>venv\Scripts\activate</code> if not in WSL) to activate your lab.</p>
+
+<hr>
+
+<h2>Your Project Folder Now</h2>
+
+<pre><code>ukubona-clinical-lab/
+ ├── venv/              # Your Python setup
+ ├── requirements.txt   # Tools list
+ ├── run.sh             # Runner script
+ ├── s1.py              # Test code
+ ├── bootstrap.sh       # Setup script
+ └── plots/             # Your output (session1_regression.png)
+</code></pre>
+
+<hr>
+
+<h2>Why Automation Matters in Clinical Biostatistics</h2>
+
+<p>Scripts automate setup, saving time for analysis—like running simulations on clinical data quickly.</p>
+
+<table>
+<thead>
+<tr>
+  <th>Skill</th>
+  <th>Why It Fits Clinical Biostatistics</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>Bash Scripts</td><td>Automate data processing pipelines for large datasets.</td></tr>
+<tr><td>Venv</td><td>Ensures consistent environments for reproducible analyses.</td></tr>
+<tr><td>NumPy/Matplotlib/Scipy</td><td>For statistical computations and visualizing distributions/regressions.</td></tr>
+<tr><td>Reproducibility</td><td>Share analyses via GitHub for collaborative research.</td></tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2>Ukubona Principle</h2>
+
+<blockquote>
+You're building tools to explore clinical patterns—one simple step at a time!
+</blockquote>
+
+<p>Stuck? Note for Zoom. Head to Session 1!</p>
+
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+
+  <div class="wrap-max footer-wrap">
+
+    <div class="footer-chorus" aria-label="Ukubona chorus">
+
+      <span class="chip">"Ukubona" means</span>
+      <span class="chip"><em>to see, to witness</em> —</span>
+      <span class="chip">to look into the mirror.</span>
+
+    </div>
+
+    <div class="footer-micro" style="margin-top:12px">
+
+      <p>
+        © 2026 Ukubona LLC · Johns Hopkins Enterprise Vendor
+      </p>
+
+    </div>
+
+  </div>
+
+</footer>
+  <script src="../js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ukubona LLC: Aeronautics Math Internship</title>
+  <meta name="description" content="Aeronautics Math Internship at Ukubona LLC.">
+  <link rel="canonical" href="https://ukubona-llc.github.io/">
+  <meta name="robots" content="index,follow">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0a0a0f">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:site_name" content="Ukubona LLC">
+  <meta property="og:title" content="Ukubona LLC: Aeronautics Math Internship">
+  <meta property="og:description" content="Ukubona LLC: Aeronautics Math Internship">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ukubona-llc.github.io/">
+  <meta property="og:image" content="https://abikesa.github.io/logos/assets/ukubona-light.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ukubona LLC: Aeronautics Math Internship">
+  <meta name="twitter:description" content="Ukubona LLC: Aeronautics Math Internship">
+  <meta name="twitter:image" content="https://abikesa.github.io/logos/assets/ukubona-light.png">
+
+  <!-- Icons / assets -->
+  <link rel="icon" href="https://abikesa.github.io/favicon/assets/favicon-light.ico" type="image/x-icon">
+  <link rel="icon" href="https://abikesa.github.io/favicon/assets/favicon-light.ico" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="https://abikesa.github.io/favicon/assets/favicon-dark.ico" media="(prefers-color-scheme: dark)">
+  <link rel="preload" href="https://abikesa.github.io/logos/assets/ukubona-light.png" as="image">
+  <link rel="preload" href="https://abikesa.github.io/logos/assets/ukubona-dark.png" as="image">
+
+  <!-- Perf: preconnect fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/index.css">
+  <script id="MathJax-script" defer
+     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+<body>
+    <div class="scroll-indicator"><div class="scroll-progress"></div></div>
+  <div class="bg-pattern"></div>
+  <!-- Copy header -->
+   <header class="header">
+    <div class="nav-container wrap-max">
+      <img src="https://abikesa.github.io/logos/assets/ukubona-dark.png"
+           alt="Ukubona LLC Logo"
+           id="logo"
+           class="logo" />
+      <div class="top-right">
+        <ul class="nav-links">
+          <li><a href="/" class="nav-link" data-nav="home">Home</a></li>
+        </ul>
+        <button class="menu-icon" id="menuIcon" role="button" aria-label="Open navigation menu" aria-expanded="false">
+          <div></div><div></div><div></div>
+          <div></div><div></div><div></div>
+          <div></div><div></div><div></div>
+        </button>
+        <button id="toggle-theme" aria-label="Toggle theme">🌙</button>
+      </div>
+    </div>
+    <div class="app-grid wrap-max" id="gridMenu" aria-hidden="true">
+      <a href="session1.html"><div class="icon-box">1️⃣</div>Session 1</a>
+      <a href="session2.html"><div class="icon-box">2️⃣</div>Session 2</a>
+      <a href="session3.html"><div class="icon-box">3️⃣</div>Session 3</a>
+      <a href="session4.html"><div class="icon-box">4️⃣</div>Session 4</a>
+      <a href="session5.html"><div class="icon-box">5️⃣</div>Session 5</a>
+      <a href="session6.html"><div class="icon-box">6️⃣</div>Session 6</a>
+      <a href="session7.html"><div class="icon-box">7️⃣</div>Session 7</a>
+      <a href="session8.html"><div class="icon-box">8️⃣</div>Session 8</a>
+      <a href="https://ukubona-llc.github.io"><div class="icon-box">📊</div>Ukubona Home</a>
+    </div>
+  </header>
+  <main class="page wrap-max">
+    <section class="card">
+      <h1>Session 2: Rates of Change – Calculus in Motion</h1>
+      <h2>Discuss</h2>
+      <p>How calculus models acceleration (e.g., takeoff speed). "Pilots feel it; designers predict it."</p>
+      <h2>Code</h2>
+      <pre><code>import numpy as np
+import matplotlib.pyplot as plt
+
+t = np.linspace(0, 10, 100)
+velocity = 10 * t - 0.5 * 9.81 * t**2  # Simple projectile velocity
+accel = np.gradient(velocity, t)  # Derivative for acceleration
+
+plt.plot(t, velocity, label='Velocity')
+plt.plot(t, accel, label='Acceleration')
+plt.xlabel('Time (s)')
+plt.ylabel('Value (m/s or m/s²)')
+plt.title('Rates of Change: Calculus in Flight')
+plt.legend()
+plt.grid(True)
+plt.show()</code></pre>
+      <p>Extend Session 1—use numpy to compute derivatives for velocity curves. Plot a simple parabolic flight path (like a thrown ball, bridging to baseball).</p>
+      <h2>Excite</h2>
+      <p>Animate the path with matplotlib—watch it "fly" on screen.</p>
+      <h2>Homework</h2>
+      <p>Add wind variable; observe path changes.</p>
+    </section>
+  </main>
+  <!-- Footer -->
+   <footer class="footer">
+    <div class="wrap-max footer-wrap">
+      <div class="footer-chorus" aria-label="Ukubona chorus">
+        <span class="chip">"Ukubona" means</span>
+        <span class="chip"><em>to see, to witness</em> —</span>
+        <span class="chip">to look into the mirror.</span>
+      </div>
+      <div class="footer-extra" hidden></div>
+      <div class="footer-footnote" aria-live="polite"></div>
+      <div class="footer-micro" style="margin-top:12px">
+        <p>© 2025 Ukubona LLC · <a href="/assets/files/ukubona.vcf" download>vCard</a> · Johns Hopkins Enterprise Vendor (June 2025)</p>
+      </div>
+    </div>
+  </footer>
+  <script src="../js/index.js"></script>
+</body>
+</html>

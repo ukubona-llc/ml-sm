@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ukubona LLC: Level 1 - Session 1: Foundations (Descriptive Stats & Basics)</title>
+  <meta name="description" content="Level 1, Session 1 of the Clinical Biostatistics Internship at Ukubona LLC.">
+  <link rel="canonical" href="https://ukubona-llc.github.io/">
+  <meta name="robots" content="index,follow">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0a0a0f">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:site_name" content="Ukubona LLC">
+  <meta property="og:title" content="Ukubona LLC: Level 1 - Session 1: Foundations (Descriptive Stats & Basics)">
+  <meta property="og:description" content="Level 1, Session 1 of the Clinical Biostatistics Internship at Ukubona LLC.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ukubona-llc.github.io/">
+  <meta property="og:image" content="https://abikesa.github.io/logos/assets/ukubona-light.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ukubona LLC: Level 1 - Session 1: Foundations (Descriptive Stats & Basics)">
+  <meta name="twitter:description" content="Level 1, Session 1 of the Clinical Biostatistics Internship at Ukubona LLC.">
+  <meta name="twitter:image" content="https://abikesa.github.io/logos/assets/ukubona-light.png">
+
+  <!-- Icons / assets -->
+  <link rel="icon" href="https://abikesa.github.io/favicon/assets/favicon-light.ico" type="image/x-icon">
+  <link rel="icon" href="https://abikesa.github.io/favicon/assets/favicon-light.ico" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="https://abikesa.github.io/favicon/assets/favicon-dark.ico" media="(prefers-color-scheme: dark)">
+  <link rel="preload" href="https://abikesa.github.io/logos/assets/ukubona-light.png" as="image">
+  <link rel="preload" href="https://abikesa.github.io/logos/assets/ukubona-dark.png" as="image">
+
+  <!-- Perf: preconnect fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/index.css">
+  <script id="MathJax-script" defer
+     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+<body>
+    <div class="scroll-indicator"><div class="scroll-progress"></div></div>
+  <div class="bg-pattern"></div>
+  <!-- Header with app-grid linking back to index and other sessions -->
+   <header class="header">
+    <div class="nav-container wrap-max">
+      <img src="https://abikesa.github.io/logos/assets/ukubona-dark.png"
+           alt="Ukubona LLC Logo"
+           id="logo"
+           class="logo" />
+      <div class="top-right">
+        <ul class="nav-links">
+          <li><a href="../../index.html" class="nav-link" data-nav="home">Home</a></li>
+        </ul>
+        <button class="menu-icon" id="menuIcon" role="button" aria-label="Open navigation menu" aria-expanded="false">
+          <div></div><div></div><div></div>
+          <div></div><div></div><div></div>
+          <div></div><div></div><div></div>
+        </button>
+        <button id="toggle-theme" aria-label="Toggle theme">🌙</button>
+      </div>
+    </div>
+    <div class="app-grid wrap-max" id="gridMenu" aria-hidden="true">
+      <a href="session0.html"><div class="icon-box">⚙️</div>Session 0</a>
+      <a href="session2.html"><div class="icon-box">2️⃣</div>Session 2</a>
+      <a href="session3.html"><div class="icon-box">3️⃣</div>Session 3</a>
+      <a href="session4.html"><div class="icon-box">4️⃣</div>Session 4</a>
+      <a href="session5.html"><div class="icon-box">5️⃣</div>Session 5</a>
+      <a href="session6.html"><div class="icon-box">6️⃣</div>Session 6</a>
+      <a href="session7.html"><div class="icon-box">7️⃣</div>Session 7</a>
+      <a href="session8.html"><div class="icon-box">8️⃣</div>Session 8</a>
+      <a href="https://ukubona-llc.github.io"><div class="icon-box">📊</div>Ukubona Home</a>
+    </div>
+  </header>
+  <main class="page wrap-max">
+    <section class="card">
+      <h1>Session 1: Foundations – Why Stats Powers Clinical Insights (Descriptive Stats & Basics)</h1>
+      <h2>Quick Review</h2>
+      <p>From Amanda Ategeka, MD's notes: Biostatistics is the core for understanding clinical data patterns (essential for roles in research and healthcare). Think of how stats reveal 'hidden effects' in patient outcomes— you'll do the same for medical insights!</p>
+      <h2>Get Started</h2>
+      <p>Open your <code>ukubona-clinical-lab</code> folder in VS Code. In the terminal, type <code>wsl</code> (if on Windows) to enter Linux mode, then <code>source venv/bin/activate</code> to turn on your lab.</p>
+      <h2>Step 1: Create s1.py</h2>
+      <p>In terminal, type <code>code s1.py</code>. This opens the file in VS Code.</p>
+      <p>Copy-paste the code below into it, then save (Ctrl+S).</p>
+      <pre><code>import numpy as np
+import matplotlib.pyplot as plt
+import os
+
+os.makedirs("plots", exist_ok=True)
+
+# Simulate simple clinical data: patient blood pressure readings
+np.random.seed(42)
+bp_readings = np.random.normal(120, 15, 100)  # Mean 120, std 15
+
+# Calculate descriptive stats
+mean_bp = np.mean(bp_readings)
+std_bp = np.std(bp_readings)
+
+fig, ax = plt.subplots()
+
+ax.hist(bp_readings, bins=15, color="blue", alpha=0.7, label="BP Readings")
+ax.axvline(mean_bp, color="red", linestyle="--", label=f"Mean: {mean_bp:.2f}")
+ax.axvline(mean_bp + std_bp, color="green", linestyle="--", label=f"+1 SD: {std_bp:.2f}")
+ax.axvline(mean_bp - std_bp, color="green", linestyle="--", label=f"-1 SD")
+
+ax.set_xlabel("Blood Pressure")
+ax.set_ylabel("Frequency")
+ax.set_title("Descriptive Stats: Blood Pressure Distribution")
+ax.legend()
+ax.grid(True)
+
+plt.savefig("plots/session1_bp_dist.png", dpi=200)
+plt.close()
+
+print("✅ Plot saved!")
+print(f"Mean: {mean_bp:.2f}, Std Dev: {std_bp:.2f}")</code></pre>
+      <h2>Step 2: Run the Code</h2>
+      <p>In terminal, type <code>bash run.sh</code>. This runs your script and saves a plot in <code>plots/session1_bp_dist.png</code>. Open the image—it's a histogram of simulated blood pressure data!</p>
+      <h2>Excite: Play Around</h2>
+      <p>Edit s1.py: Change the mean to 130 (higher average BP) or std to 20 (more variation). Save, run <code>bash run.sh</code> again. See how the distribution changes? That's stats revealing clinical patterns!</p>
+      <h2>Homework</h2>
+      <p>Try different parameters (e.g., larger sample size: 500 readings). Save your best plot. Commit to GitHub: In terminal, <code>git add .</code>, <code>git commit -m "Session 1 descriptive stats"</code>, <code>git push</code>.</p>
+      <h2>Math Focus</h2>
+      <p>Descriptive statistics summarize data—like mean for average values and standard deviation for variation. Key for understanding clinical datasets!</p>
+    </section>
+  </main>
+  <!-- Footer -->
+   <footer class="footer">
+    <div class="wrap-max footer-wrap">
+      <div class="footer-chorus" aria-label="Ukubona chorus">
+        <span class="chip">"Ukubona" means</span>
+        <span class="chip"><em>to see, to witness</em> —</span>
+        <span class="chip">to look into the mirror.</span>
+      </div>
+      <div class="footer-extra" hidden></div>
+      <div class="footer-footnote" aria-live="polite"></div>
+      <div class="footer-micro" style="margin-top:12px">
+        <p>© 2026 Ukubona LLC · <a href="/assets/files/ukubona.vcf" download>vCard</a> · Johns Hopkins Enterprise Vendor (June 2025)</p>
+      </div>
+    </div>
+  </footer>
+ <script src="../js/index.js"></script>
+</body>
+</html>
